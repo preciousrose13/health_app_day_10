@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
 import 'package:health/Resources/Crousal_slider/slider_user.dart';
@@ -44,10 +45,15 @@ class _HomePageState extends State<HomePage> {
       appBar: MyAppBar(
           firebaseUser: widget.firebaseUser, userModel: widget.userModel),
       endDrawer: MyDrawer(
-        ontap: () {
-          _auth.signOut().then((value) {
+        ontap: () async{
+            await GoogleSignIn().signOut();
+
+            await FirebaseAuth.instance.signOut();
+
+            _auth.signOut();
+
             Get.to(() => Splash_Screen());
-          });
+
         },
         userModel: widget.userModel,
         firebaseUser: widget.firebaseUser,

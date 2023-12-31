@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
-import 'package:health/View/User_Authentication/Complete_Profile_User.dart';
-import 'package:health/View/Provider_Authentication/provider_complete_profile.dart';
-import 'package:health/View/Provider_Pages/Provider_home/service_provider_home.dart';
 import 'package:health/View/User_Authentication/user_login.dart';
 import 'package:health/View/User_Pages/Home_page/home_page.dart';
 
