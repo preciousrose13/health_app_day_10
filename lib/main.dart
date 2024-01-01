@@ -60,7 +60,7 @@ class MyAppLoggedIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      home: HomePage(userModel: userModel, firebaseUser: firebaseUser), //Splash_Screen(),
+      home: Splash_Screen(),
       debugShowCheckedModeBanner: false,
       locale: Locale("en", "US"),
       fallbackLocale: Locale("en", "US"),
