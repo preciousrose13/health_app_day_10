@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:health/Chat_App/Models/firebase_helper.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
+import 'package:health/View/User_Pages/Home_page/home_page.dart';
 import 'package:health/ViewModel/Localization/localization.dart';
 import 'package:uuid/uuid.dart';
 import 'firebase_options.dart';
@@ -59,8 +60,7 @@ class MyAppLoggedIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      // home: Home(userModel: userModel, firebaseUser: firebaseUser,),
-      home: Splash_Screen(),
+      home: HomePage(userModel: userModel, firebaseUser: firebaseUser), //Splash_Screen(),
       debugShowCheckedModeBanner: false,
       locale: Locale("en", "US"),
       fallbackLocale: Locale("en", "US"),

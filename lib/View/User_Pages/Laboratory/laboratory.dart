@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/Resources/Payment_gateway_page/payment_gateway.dart';
@@ -10,7 +12,7 @@ class Laboratory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF58aac5),
         centerTitle: true,
         title: Text("Laboratory"),
       ),
@@ -1518,7 +1520,7 @@ class Laboratory extends StatelessWidget {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.blue,
+            color: Color.fromARGB(255, 64, 150, 179),
           ),
         ),
         contentPadding: EdgeInsets.all(10),
@@ -1528,7 +1530,7 @@ class Laboratory extends StatelessWidget {
             SizedBox(height: 8),
             Container(
               padding: EdgeInsets.all(10),
-              color: Colors.blue,
+              color: Color(0xFF58aac5),
               child: Text(
                 subtitle,
                 style: TextStyle(
@@ -1540,7 +1542,7 @@ class Laboratory extends StatelessWidget {
           ],
         ),
         trailing: Icon(icon, color: Colors.black),
-        tileColor: Colors.blue.shade800.withOpacity(0.2),
+        tileColor: Color.fromARGB(255, 210, 237, 246),
       ),
     );
   }

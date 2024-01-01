@@ -12,7 +12,7 @@ class MySearchBar extends StatelessWidget {
         width: 350,
         height: 50,
         decoration: BoxDecoration(
-          color: Colors.grey[200],
+          color: Colors.white,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(

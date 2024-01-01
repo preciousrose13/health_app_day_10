@@ -35,7 +35,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   ),
   title: Text(
     userModel.fullname ?? 'User',
-    style: TextStyle(color: Colors.white, fontSize: 25),
+    style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w600),
   ),
   centerTitle: true,
   iconTheme: IconThemeData(color: Colors.white),

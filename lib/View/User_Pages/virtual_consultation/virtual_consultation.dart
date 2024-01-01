@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:health/Resources/Search_bar/search_bar.dart';
 
 class AvailableProviders extends StatelessWidget {
   AvailableProviders({

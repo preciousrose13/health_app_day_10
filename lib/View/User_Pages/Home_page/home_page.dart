@@ -5,11 +5,15 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
+// ignore: unused_import
 import 'package:health/Resources/Crousal_slider/slider_user.dart';
 import 'package:health/Resources/Drawer/drawer.dart';
 import 'package:health/Resources/Search_bar/search_bar.dart';
+import 'package:health/Resources/Services_grid/home_services.dart';
 import 'package:health/Resources/Services_grid/user_grid.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
+import 'package:health/View/User_Pages/virtual_consultation/virtual_consultation.dart';
 
 class HomePage extends StatefulWidget {
   final UserModel userModel;
@@ -41,7 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: MyColors.PageBg,
       appBar: MyAppBar(
           firebaseUser: widget.firebaseUser, userModel: widget.userModel),
       endDrawer: MyDrawer(
@@ -61,41 +65,93 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: [
           SizedBox(height: 20),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: [
-          //     Padding(
-          //       padding: const EdgeInsets.all(8.0),
-          //       child: Text(
-          //         'Our Services:'.tr,
-          //         style: TextStyle(
-          //           fontSize: 25,
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //       ),
-          //     ),
-          //   ],
-          // ),
+         
           MySearchBar(),
-          CarouselExample(
-            userModel: widget.userModel,
-            firebaseUser: widget.firebaseUser,
-          ),
+
           SizedBox(height: 20),
+
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Other Services:'.tr,
+              'Virtual Medical Service:'.tr,
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
+                color: Colors.black,
               ),
             ),
           ),
+
           SizedBox(
             height: 20,
           ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: ListTile(
+                onTap: () {
+                  Get.to(() => AvailableProviders());
+                },
+                tileColor: Colors.white,
+                leading: Icon(Icons.medical_information, color: MyColors.blue, size: 30),
+                title: Text(
+                  "Virtual Consultations",
+                  style: TextStyle(
+                    color: MyColors.blue, 
+                    fontWeight: FontWeight.bold, 
+                    fontSize: 18
+                  ),
+                ),
+                subtitle: Text("Book an instant Virtual Consultation with a doctor",
+                    style: TextStyle(color: Colors.black, fontSize: 15)),
+              ),
+            ),
+          ),
+
+          SizedBox(
+            height: 40,
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Home Visit Service:'.tr,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+
+          Home_Services(
+            userModel: widget.userModel, 
+            firebaseUser: widget.firebaseUser
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'More Services:'.tr,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+          ),
+
+          SizedBox(
+            height: 20,
+          ),
+
           UserServicesGrid(),
+
           SizedBox(
             height: 20,
           ),
