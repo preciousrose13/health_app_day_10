@@ -1498,17 +1498,16 @@ class Laboratory extends StatelessWidget {
 
   void navigateToPaymentDetails(
       BuildContext context, String title, String subtitle, IconData icon) {
-    // Navigate to payment details page with package details
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => PaymentDetailsPage(
-          packageName: title,
-          packagePrice: subtitle,
-          packageIcon: icon,
-        ),
-      ),
-    );
+
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(
+    //     builder: (context) => PaymentDetailsPage(
+    //       packageName: title,
+    //       packagePrice: subtitle,
+    //     ),
+    //   ),
+    //);
   }
 
   Widget buildListTile(String title, String subtitle, IconData icon) {

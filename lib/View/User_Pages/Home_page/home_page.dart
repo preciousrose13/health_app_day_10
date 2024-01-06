@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppBar/app_bar.dart';
 import 'package:health/Resources/AppColors/app_colors.dart';
+import 'package:health/Resources/Bottom_Navigation_Bar/bottom_nav.dart';
 // ignore: unused_import
 import 'package:health/Resources/Crousal_slider/slider_user.dart';
 import 'package:health/Resources/Drawer/drawer.dart';
@@ -13,6 +14,9 @@ import 'package:health/Resources/Search_bar/search_bar.dart';
 import 'package:health/Resources/Services_grid/home_services.dart';
 import 'package:health/Resources/Services_grid/user_grid.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
+import 'package:health/View/User_Pages/Doctor_visit/doctor_visit.dart';
+import 'package:health/View/User_Pages/Laboratory/laboratory.dart';
+import 'package:health/View/User_Pages/Nurse_visit/nurse_visit.dart';
 import 'package:health/View/User_Pages/virtual_consultation/virtual_consultation.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,184 +52,367 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: MyColors.PageBg,
       appBar: MyAppBar(
           firebaseUser: widget.firebaseUser, userModel: widget.userModel),
-      endDrawer: MyDrawer(
-        ontap: () async{
-            await GoogleSignIn().signOut();
+      // endDrawer: MyDrawer(
+      //   ontap: () async{
+      //       await GoogleSignIn().signOut();
 
-            await FirebaseAuth.instance.signOut();
+      //       await FirebaseAuth.instance.signOut();
 
-            _auth.signOut();
+      //       _auth.signOut();
 
-            Get.to(() => Splash_Screen());
+      //       Get.to(() => Splash_Screen());
 
-        },
-        userModel: widget.userModel,
-        firebaseUser: widget.firebaseUser,
-      ),
-      body: ListView(
-        children: [
-          SizedBox(height: 20),
-         
-          MySearchBar(),
-
-          SizedBox(height: 20),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Virtual Medical Service:'.tr,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+      //   },
+      //   userModel: widget.userModel,
+      //   firebaseUser: widget.firebaseUser,
+      // ),
+      body: SingleChildScrollView(
+        
+        child: Container(
+          color: Colors.white,
+          child: Column(
+            
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: MyColors.PageBg,
+                  ),
+                  child: ListTile(
+                      onTap: () {},
+                      tileColor: MyColors.PageBg,
+                      title: Text(
+                        "We accept Bupa, Tawuniya, MEDGULF, Malath and AlRajhi Takaful insurance for medicine.\n",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15
+                        ),
+                      ),
+                      subtitle: Text("Virtual Medical Service",
+                          style: TextStyle(
+                            color: Colors.black, 
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16
+                            )),
+                    ),
+                ),
               ),
-            ),
-          ),
-
-          SizedBox(
-            height: 20,
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: ListTile(
-                onTap: () {
-                  Get.to(() => AvailableProviders());
-                },
-                tileColor: Colors.white,
-                leading: Icon(Icons.medical_information, color: MyColors.blue, size: 30),
-                title: Text(
-                  "Virtual Consultations",
-                  style: TextStyle(
+                        
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: ListTile(
+                  onTap: () {
+                    Get.to(() => AvailableProviders());
+                  },
+                  tileColor: Colors.white,
+                  leading: Icon(
+                    Icons.videocam_rounded, 
                     color: MyColors.blue, 
-                    fontWeight: FontWeight.bold, 
-                    fontSize: 18
+                    size: 40
+                    ),
+                  title: Text(
+                    "Virtual Consultations",
+                    style: TextStyle(
+                      color: MyColors.blue, 
+                      fontWeight: FontWeight.bold, 
+                      fontSize: 18
+                    ),
+                  ),
+                  subtitle: Text("We accept Bupa, Tawuniya, MEDGULF, Malath and AlRajhi Takaful insurance for telemedicine.",
+                      style: TextStyle(
+                        color: Colors.black, 
+                        fontSize: 14, 
+                        fontWeight: FontWeight.w500
+                        ),
+                      ),
+                ),
+              ),
+
+              SizedBox(
+                height: 10,
+              ),
+
+
+             Container(
+              color: MyColors.PageBg,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                   Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Icon(Icons.location_on, color: MyColors.blue),
+                    SizedBox(width: 5),
+                    Text("Select Location", 
+                    style: TextStyle(
+                      color: Colors.black, 
+                      fontSize: 16)
+                     ),
+                     SizedBox(
+                       width: 10,
+                     ),
+                    Icon(Icons.keyboard_arrow_down, color: Colors.black),
+                  ]
+                ),
+              ),
+
+          
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Home Visit Services',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      
+                    ),
                   ),
                 ),
-                subtitle: Text("Book an instant Virtual Consultation with a doctor",
-                    style: TextStyle(color: Colors.black, fontSize: 15)),
               ),
-            ),
-          ),
 
-          SizedBox(
-            height: 40,
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Home Visit Service:'.tr,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
-
-          Home_Services(
-            userModel: widget.userModel, 
-            firebaseUser: widget.firebaseUser
-          ),
-
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'More Services:'.tr,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
-
-          SizedBox(
-            height: 20,
-          ),
-
-          UserServicesGrid(),
-
-          SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              "Pending appointments".tr,
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          StreamBuilder<QuerySnapshot>(
-            stream: user_appointments,
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (snapshot.hasError) {
-                return const Text('Something went wrong');
-              } else if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Text("Loading");
-              }
-              return ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(14.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(15),
+              Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 40,
                       ),
-                      child: ListTile(
-                        title: Text(
-                          snapshot.data!.docs[index]['email'].toString(),
-                          style:
-                              TextStyle(color: Colors.blue[700], fontSize: 16),
+                      Container(
+                        height: 120.0,
+                        width: 160.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color.fromARGB(255,155,218,251),
                         ),
-                        subtitle: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              snapshot.data!.docs[index]['address'].toString(),
-                              style: TextStyle(color: Colors.green[800]),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              snapshot.data!.docs[index]["type"].toString(),
-                              style: TextStyle(color: Colors.red, fontSize: 16),
-                            ),
-                          ],
-                        ),
-                        leading: Icon(
-                          Icons.person,
-                          color: Colors.blue[700],
-                          size: 40,
-                        ),
-                        trailing: Icon(
-                          Icons.medical_services,
-                          size: 35,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Laboratory",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                              )),
+                              Image.asset("assets/images/1.png",height: 60,),
+                            ]
+                          ),
                         ),
                       ),
-                    ),
+
+                      SizedBox(width: 20),
+                      
+                      Container(
+                        height: 120.0,
+                        width: 160.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color.fromARGB(255,155,218,251),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Doctor Visit",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                              )),
+                              Image.asset("assets/images/2.png",height: 60,),
+                            ]
+                          ),
+                        ),
+                      ),
+                    ]
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 40,
+                      ),
+                      Container(
+                        height: 120.0,
+                        width: 160.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color.fromARGB(255,155,218,251),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Nurse Visit",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                              )),
+                              Image.asset("assets/images/3.png",height: 60,),
+                            ]
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(width: 20),
+                      
+                      Container(
+                        height: 120.0,
+                        width: 160.0,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color.fromARGB(255,155,218,251),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Text("Vitamin IV Drips",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold
+                              )),
+                              Image.asset("assets/images/4.png",height: 60,),
+                            ]
+                          ),
+                        ),
+                      ),
+                    ]
+                  ),
+                ]
+              ),
+
+              SizedBox(
+                height: 40,
+              ),
+
+            ]
+           ),
+          ),
+                   
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'More Services:'.tr,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+                        
+              SizedBox(
+                height: 20,
+              ),
+                        
+              UserServicesGrid(
+                userModel: widget.userModel, 
+                firebaseUser: widget.firebaseUser,
+              ),
+                        
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  "Pending appointments".tr,
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              StreamBuilder<QuerySnapshot>(
+                stream: user_appointments,
+                builder:
+                    (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return const Text('Something went wrong');
+                  } else if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Text("Loading");
+                  }
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: snapshot.data!.docs.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              snapshot.data!.docs[index]['email'].toString(),
+                              style:
+                                  TextStyle(color: Colors.blue[700], fontSize: 16),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  snapshot.data!.docs[index]['address'].toString(),
+                                  style: TextStyle(color: Colors.green[800]),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(
+                                  snapshot.data!.docs[index]["type"].toString(),
+                                  style: TextStyle(color: Colors.red, fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            leading: Icon(
+                              Icons.person,
+                              color: Colors.blue[700],
+                              size: 40,
+                            ),
+                            trailing: Icon(
+                              Icons.medical_services,
+                              size: 35,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   );
                 },
-              );
-            },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
+      bottomNavigationBar: MyBottomNavBar(
+        userModel: widget.userModel, 
+        firebaseUser: widget.firebaseUser,
+      )
     );
   }
 }

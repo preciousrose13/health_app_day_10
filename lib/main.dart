@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:health/Chat_App/Models/firebase_helper.dart';
 import 'package:health/Chat_App/Models/user_models.dart';
+import 'package:health/Resources/Payment_gateway_page/payment_gateway.dart';
 import 'package:health/View/Splash_Screen/splash_screen.dart';
 import 'package:health/View/User_Pages/Home_page/home_page.dart';
 import 'package:health/ViewModel/Localization/localization.dart';
@@ -60,6 +61,10 @@ class MyAppLoggedIn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // home: PaymentDetailsPage(
+      //   packageName: "packageName", 
+      //   packagePrice: "packagePrice", 
+      //   ), 
       home: Splash_Screen(),
       debugShowCheckedModeBanner: false,
       locale: Locale("en", "US"),

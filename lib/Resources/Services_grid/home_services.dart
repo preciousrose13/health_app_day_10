@@ -26,38 +26,24 @@ class HomeServices extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: onPressed,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 5.0),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12.0),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 5,
-                ),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  serviceIcon,
-                  size: 40.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                serviceIcon,
+                size: 40.0,
+                color: MyColors.blue,
+              ),
+              SizedBox(width: 10.0),
+              Text(
+                serviceName,
+                style: TextStyle(
+                  fontSize: 18.0,
                   color: MyColors.blue,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(width: 10.0),
-                Text(
-                  serviceName,
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: MyColors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
 
@@ -75,309 +61,171 @@ class Home_Services extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-      child: GridView.count(
-        padding: EdgeInsets.all(0),
-        crossAxisCount: 2,
-        crossAxisSpacing: 20.0,
-        mainAxisSpacing: 0.0,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 40, bottom: 20),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => DoctorVisit());
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.medical_services_outlined,
-                        size: 40.0,
-                        color: MyColors.blue,
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        "Doctor Visit",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: MyColors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-          
-          Padding(
-            padding: const EdgeInsets.only(top: 40, bottom: 20),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => Laboratory());
-              },
-              child: Container(
-                height: 20.0,
-                width: 50.0,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.science_outlined,
-                        size: 40.0,
-                        color: MyColors.blue,
-                      ),
-                      SizedBox(height: 10.0),
-                      Text(
-                        "Laboratory",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: MyColors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
+    return GridView.count(
+      crossAxisCount: 2,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      children: [
 
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 50),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => Vitamin(userModel: userModel, firebaseUser: firebaseUser,));
-              },
-              child: Container(
-                height: 20.0,
-                width: 50.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                  border: Border.all(color: Colors.black),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+        
+        InkWell(
+          onTap: () {
+            Get.to(() => Laboratory());
+          },
+          child: Center(
+            child: Container(
+              height: 120.0,
+              width: 160.0,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255,155,218,251),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
                     children: [
-                      Icon(
-                        Icons.local_pharmacy_outlined,
-                        size: 40.0,
-                        color: MyColors.blue,
-                      ),
-                      SizedBox(height: 10.0),
                       Text(
-                        "Vitamin IV Drips",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: MyColors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    "Laboratory".tr,
+                    style: TextStyle(
+                      fontSize: 18.0, 
+                      color: Colors.black, 
+                      fontWeight: FontWeight.bold,
                       ),
+                    ),
+                      Image.asset(
+                    "assets/images/1.png",
+                    height: 60,
+                  ),
+                  
                     ],
                   ),
-                ),
+                ],
               ),
             ),
           ),
-
-          Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 50),
-            child: InkWell(
-              onTap: () {
-                Get.to(() => NurseVisit());
-              },
-              child: Container(
-                height: 20.0,
-                width: 50.0,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+        ),
+    
+        InkWell(
+          onTap: () {
+            Get.to(() => DoctorVisit());
+          },
+          child: Center(
+            child: Container(
+              height: 120.0,
+              width: 160.0,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255,155,218,251),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
                     children: [
-                      Icon(
-                        Icons.medical_information_outlined,
-                        size: 40.0,
-                        color: MyColors.blue,
-                      ),
-                      SizedBox(height: 10.0),
                       Text(
-                        "Nurse Visit",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: MyColors.blue,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    "Doctor Visit".tr,
+                     style: TextStyle(
+                      fontSize: 18.0, 
+                      color: Colors.black, 
+                      fontWeight: FontWeight.bold,
                       ),
+                    ),
+                      Image.asset(
+                    "assets/images/2.png",
+                    height: 60,
+                  ),
+                  
                     ],
                   ),
-                ),
+                ],
               ),
             ),
           ),
+        ),
+        
+    
+        
+        InkWell(
+          onTap: () {
+            Get.to(() => NurseVisit());
+          },
+          child: Center(
+            child: Container(
+              height: 120.0,
+              width: 160.0,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255,155,218,251),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Nurse Visit".tr,
+                        style: TextStyle(
+                          fontSize: 18.0, 
+                          color: Colors.black, 
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Image.asset(
+                          "assets/images/3.png",
+                          height: 60,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
 
-        ],
-      ),
+        InkWell(
+          onTap: () {
+            Get.to(() => Vitamin(userModel: userModel, firebaseUser: firebaseUser,));
+          },
+          child: Center(
+            child: Container(
+              height: 120.0,
+              width: 160.0,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255,155,218,251),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        "Vitamin Drips".tr,
+                        style: TextStyle(
+                          fontSize: 18.0, 
+                          color: Colors.black, 
+                          fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Image.asset(
+                          "assets/images/4.png",
+                          height: 60,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+    
+
+      ],
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class Home_Services extends StatelessWidget {
-//   final UserModel userModel;
-//   final User firebaseUser;
-
-//   const Home_Services({Key? key, required this.userModel, required this.firebaseUser}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0.0),
-//       child: GridView.count(
-//         padding: EdgeInsets.zero,
-//         crossAxisCount: 2,
-//         crossAxisSpacing: 10.0,  // Set crossAxisSpacing to 0.0 to remove horizontal gap
-//         mainAxisSpacing: 10.0,  // Set mainAxisSpacing to 0.0 to remove vertical gap
-//         shrinkWrap: true,
-//         physics: NeverScrollableScrollPhysics(),
-//         children: [
-//           _buildServiceItem(context, "Doctor Visit", Icons.medical_services_outlined, () {
-//             Get.to(() => DoctorVisit());
-//           }),
-//           _buildServiceItem(context, "Laboratory", Icons.science_outlined, () {
-//             Get.to(() => Laboratory());
-//           }),
-//           _buildServiceItem(context, "Doctor Visit", Icons.medical_services_outlined, () {
-//             Get.to(() => DoctorVisit());
-//           }),
-//           _buildServiceItem(context, "Laboratory", Icons.science_outlined, () {
-//             Get.to(() => Laboratory());
-//           }),
-          
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _buildServiceItem(BuildContext context, String serviceName, IconData serviceIcon, VoidCallback onPressed) {
-//     return Padding(
-//       padding: const EdgeInsets.only(top: 40, bottom: 40),
-//       child: InkWell(
-//         onTap: onPressed,
-//         child: Container(
-//           width: MediaQuery.of(context).size.width / 2, // Set width to half of the screen width
-//           height: MediaQuery.of(context).size.height / 4, // Adjust height as needed
-//           decoration: BoxDecoration(
-//             color: Colors.white,
-//             borderRadius: BorderRadius.circular(12.0),
-//             boxShadow: [
-//               BoxShadow(
-//                 color: Colors.grey.withOpacity(0.5),
-//                 spreadRadius: 1,
-//                 blurRadius: 5,
-//               ),
-//             ],
-//           ),
-//           child: Center(
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 Icon(
-//                   serviceIcon,
-//                   size: 40.0,
-//                   color: MyColors.blue,
-//                 ),
-//                 SizedBox(height: 10.0),
-//                 Text(
-//                   serviceName,
-//                   style: TextStyle(
-//                     fontSize: 18.0,
-//                     color: MyColors.blue,
-//                     fontWeight: FontWeight.bold,
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

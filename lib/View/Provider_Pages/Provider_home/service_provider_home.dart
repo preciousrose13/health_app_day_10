@@ -49,15 +49,15 @@ class _Service_Provider_HomeState extends State<Service_Provider_Home> {
         firebaseUser: widget.firebaseUser,
         userModel: widget.userModel,
       ),
-      endDrawer: MyDrawer(
-        ontap: () {
-          _auth.signOut().then((value) {
-            Get.to(() => Splash_Screen());
-          });
-        },
-        userModel: widget.userModel,
-        firebaseUser: widget.firebaseUser,
-      ),
+      // endDrawer: MyDrawer(
+      //   ontap: () {
+      //     _auth.signOut().then((value) {
+      //       Get.to(() => Splash_Screen());
+      //     });
+      //   },
+      //   userModel: widget.userModel,
+      //   firebaseUser: widget.firebaseUser,
+      // ),
       body: ListView(
         children: [
 

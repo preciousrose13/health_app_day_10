@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
 import 'package:health/Resources/AppColors/app_colors.dart';
 import 'package:health/View/Provider_services/Accepted_requests/accepted_requests.dart';
 import 'package:health/View/User_services/About_Us/aboutus.dart';
@@ -42,6 +44,10 @@ class UserGridServices extends StatelessWidget {
 }
 
 class UserServicesGrid extends StatelessWidget {
+  final UserModel userModel;
+  final User firebaseUser;
+
+  const UserServicesGrid({super.key, required this.userModel, required this.firebaseUser});
   @override
   Widget build(BuildContext context) {
     return GridView.count(
@@ -55,7 +61,7 @@ class UserServicesGrid extends StatelessWidget {
           serviceIcon: Icons.calendar_month_outlined,
           serviceName: "Appointments".tr,
           onPressed: () {
-            Get.to(() => MyAppointments());
+            Get.to(() => MyAppointments(userModel: userModel, firebaseUser: firebaseUser,));
           },
         ),
         UserGridServices(

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
 
 class AvailableProviders extends StatelessWidget {
   AvailableProviders({
@@ -19,8 +20,12 @@ class AvailableProviders extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Virtual Consultation'.tr),
-        backgroundColor: Colors.blue,
+        title: Text('Virtual Consultation',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            )),
+        backgroundColor: MyColors.blue,
         centerTitle: true,
       ),
       body: SafeArea(
@@ -57,7 +62,7 @@ class AvailableProviders extends StatelessWidget {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.blue,  // Set background color to blue
+                            color: MyColors.blue,
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(12),
                           ),

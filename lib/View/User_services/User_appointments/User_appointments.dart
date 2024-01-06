@@ -3,12 +3,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:health/Resources/AppBar/app_bar.dart';
+import 'package:health/Chat_App/Models/user_models.dart';
+import 'package:health/Chat_App/Pages/Home.dart';
+import 'package:health/Resources/AppColors/app_colors.dart';
+import 'package:health/Resources/Bottom_Navigation_Bar/bottom_nav.dart';
+import 'package:health/Resources/Profile/profile.dart';
 import 'package:health/Resources/Search_bar/search_bar.dart';
+import 'package:health/View/User_Pages/Home_page/home_page.dart';
 
 class MyAppointments extends StatefulWidget {
+  final UserModel userModel;
+  final User firebaseUser;
   const MyAppointments({
-    Key? key,
+    Key? key, required this.userModel, required this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -33,6 +40,18 @@ class _MyAppointmentsState extends State<MyAppointments> {
     final user = _auth.currentUser;
 
     return Scaffold(
+      backgroundColor: MyColors.PageBg,
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: MyColors.purple,
+        centerTitle: true,
+        title: Text("Appointments",
+         style: TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -97,6 +116,7 @@ class _MyAppointmentsState extends State<MyAppointments> {
                               Icons.medical_services,
                               size: 35,
                             ),
+                            tileColor: Colors.white,
                           ),
                         ),
                       );
@@ -108,6 +128,67 @@ class _MyAppointmentsState extends State<MyAppointments> {
           ],
         ),
       ),
+      bottomNavigationBar: MyBottomNavBar(
+        userModel: widget.userModel, 
+        firebaseUser: widget.firebaseUser,
+      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   currentIndex: 0,
+      //   selectedItemColor: MyColors.blue,
+      //   unselectedItemColor: Colors.grey.shade800,
+      //   showUnselectedLabels: true,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: "Services",
+      //     ),
+
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.calendar_month),
+      //       label: "Appointments",
+      //     ),
+
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.chat),
+      //       label: "Chats",
+      //     ),
+
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.person),
+      //       label: "My Profile",
+      //     ),
+      //   ],
+      //   onTap: (index) {
+      //     // Handle item click based on index
+      //     if (index == 0) {
+            
+      //       Get.to(() => HomePage(
+      //         userModel: widget.userModel, 
+      //         firebaseUser: widget.firebaseUser,
+      //         ),
+      //       );
+      //     } else if (index == 1) {
+
+      //       Get.to(() => MyAppointments(
+      //         userModel: widget.userModel, 
+      //         firebaseUser: widget.firebaseUser,
+      //         ),
+      //       );
+      //     }
+      //     else if (index == 2) {
+
+      //       Get.to(() => Home(
+      //         userModel: widget.userModel, 
+      //         firebaseUser: widget.firebaseUser,
+      //         ),
+      //       );
+      //     }
+      //     else if (index == 3) {
+
+      //       Get.to(() => ProfilePage());
+      //     }
+      //   },
+      // )
     );
   }
 }
